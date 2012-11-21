@@ -20,3 +20,10 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.png
+
+js:
+  title: Javascript book
+  description:
+    Simple JS book
+  price: 10
+  image_url: ruby.png

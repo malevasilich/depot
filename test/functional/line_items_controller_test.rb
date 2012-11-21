@@ -44,6 +44,17 @@ class LineItemsControllerTest < ActionController::TestCase
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to line_items_path
+    assert_redirected_to cart_path(session[:cart_id])
+  end
+
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do    
+      xhr :post, :create, product_id: products(:ruby).id
+    end
+
+    assert_response :success
+    assert_select_jquery :html, '#cart' do
+      assert_select 'tr#current_item td', products(:ruby).title
+    end
   end
 end

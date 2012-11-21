@@ -48,6 +48,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart}
+        format.js   { @current_item=@line_item }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -79,8 +80,30 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to current_cart, notice: 'Item removed from your cart.' }
       format.json { head :no_content }
     end
   end
+
+  # GET /line_items/1/decrement
+  # GET /line_items/1/decrement.json
+  def decrement
+    @cart = current_cart
+    @line_item = LineItem.find(params[:id])
+    @line_item.quantity -= 1
+    @line_item.destroy if @line_item.quantity == 0
+
+    respond_to do |format|
+      if @line_item.quantity==0 || @line_item.save
+        format.html { redirect_to @line_item.cart}
+        format.js   { @current_item=@line_item }
+        format.json { render json: @line_item, status: :created, location: @line_item }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
 end
