@@ -89,10 +89,8 @@ class LineItemsController < ApplicationController
   # GET /line_items/1/decrement.json
   def decrement
     @cart = current_cart
-    @line_item = LineItem.find(params[:id])
-    @line_item.quantity -= 1
-    @line_item.destroy if @line_item.quantity == 0
-
+    @line_item = @cart.decrement_line_item(params[:id])
+    
     respond_to do |format|
       if @line_item.quantity==0 || @line_item.save
         format.html { redirect_to @line_item.cart}
