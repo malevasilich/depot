@@ -1,0 +1,41 @@
+<h1>Кто купил <%=@product.title%></h1>
+<p>Последний заказ:
+<%=
+latest_order = @product.orders.sort_by(&:updated_at).last 
+latest_order&&latest_order.updated_at
+%></p>
+<div class="orders_table">
+	<%	@product.orders.each do |order| %>
+	<div class="order_entry">
+		<p>Заказ <%=order.id%></p>
+		<p>Адрес доставки: <%=order.address%></p>
+
+		<table>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
+			</tr> 
+
+			<%order.line_items.each do |item|%>
+			<tr>
+				<td><%=item.product.title%></td>
+				<td><%=item.quantity%></td>
+				<td><%=number_to_currency item.total_price%></td>
+			</tr>
+			<%end%>
+
+			<tr>
+				<th colspan=2>Total:</th>
+				<th><%=number_to_currency order.line_items.map(&:total_price).sum%></th>
+			</tr>
+
+			<p>Paid by <%=order.pay_type%></p>
+		</table>
+
+		<p>
+			Заказчик:<%=order.name%>, <%=order.email%>
+		</p>
+	</div>
+	<%end%>
+</div>
