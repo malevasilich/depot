@@ -53,12 +53,12 @@ Depot::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:  "exch00.kkb.kz"
+    address:  "smpt.example.com"
     port:     25
-    domain:   kkb.kz
+    domain:   example.com
     authentication: "plain"
-    user_name: "AArzamasov"
-    password: "qSdfghjkl56"
+    user_name: "storemailer"
+    password: "secret"
   }
 
   # Enable threaded mode
