@@ -48,6 +48,12 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to order_path(assigns(:order))
   end
 
+  test "should update order with ship_date" do
+    @order.ship_date = Time.now
+    put :update, id: @order, order: @order.attributes
+    assert_redirected_to order_path(assigns(:order))
+  end
+
   test "should destroy order" do
     assert_difference('Order.count', -1) do
       delete :destroy, id: @order
