@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # allow to login with any username/password if there is no users in the db to create the first one
+    if User.count == 0 
+      user = User.create name: params[:name], password: params[:password], password_confirmation: params[:password]
+    end
+
   	user = User.find_by_name(params[:name])
   	if user and user.authenticate(params[:password])
   		session[:user_id]=user.id
