@@ -39,7 +39,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not update user without current_password" do
+    @input_attributes[:current_password] = 'invalid_password'
+    put :update, id: @user, user: @input_attributes
+    assert_equal assigns(:user).errors.messages[:current_password], ["is not correct"]
+  end 
+
   test "should update user" do
+    @input_attributes[:current_password] = 'secret'
     put :update, id: @user, user: @input_attributes
     assert_redirected_to users_path
   end
