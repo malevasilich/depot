@@ -58,7 +58,15 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 		assert_equal mail[:from].value, "malevasilich@example.com"
 		assert_equal mail.subject, "Pragmatic Store Order Confirmation"
 
-
 	end
+
+	
+   test "should logout and not be allowed back in" do
+      delete "/logout" 
+      assert_redirected_to store_url
+
+      get "/users" 
+      assert_redirected_to login_url
+   end
 
 end
