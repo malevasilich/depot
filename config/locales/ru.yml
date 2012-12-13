@@ -1,11 +1,15 @@
+#encoding: utf-8
 #START:layout
 #START:main
 #START:cart
 #START:currency
 #START:checkout
 #START:flash
-en:
-
+ru:
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z "
+      short: "%H:%M %B %d, %Y"
 #END:cart
 #END:checkout
 #END:flash
@@ -33,26 +37,26 @@ en:
 #START:layout
   layouts:
     application:
-      title:       "Pragmatic Bookshelf"
-      home:        "Home"
-      questions:   "Questions"
-      news:        "News"
-      contact:     "Contact"
+      title:       "Прагматик Букшелф"
+      home:        "Хоум"
+      questions:   "Вопросы?"
+      news:        "Новости"
+      contact:     "Контакты"
 #END:layout
 
 #START:cart
   carts:
     cart:
-      title:       "Your Cart"
-      empty:       "Empty cart"
-      checkout:    "Checkout"
+      title:       "Корзина"
+      empty:       "Очистить"
+      checkout:    "Оформить"
 #END:cart
 
 #START:main
   store:
     index:
-      title_html:  "Your Pragmatic Catalog"
-      add_html:    "Add to Cart"
+      title_html:  "Вот Прагматик Каталог"
+      add_html:    "В корзину"
 #END:main
 
 #START:checkout
