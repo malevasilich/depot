@@ -63,10 +63,10 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 	
    test "should logout and not be allowed back in" do
       delete "/logout" 
-      assert_redirected_to store_url
+      assert_redirected_to store_url(I18n.default_locale)
 
       get "/users" 
-      assert_redirected_to login_url
+      assert_redirected_to login_path+"?locale="+I18n.default_locale.to_s
    end
 
 end

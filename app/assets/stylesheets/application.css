@@ -42,7 +42,7 @@
 }
 
 #main {
-  margin-left: 17em;
+  margin-left: 24em;
   padding: 1em;
   background: white;
 }
@@ -58,8 +58,9 @@
 
 #side {
   float: left;
-  padding: 1em 2em;
-  width: 13em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 21em;
   background: #9c9;
 
   form, div {

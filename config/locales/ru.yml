@@ -18,11 +18,11 @@ ru:
   number:
     currency:
       format:
-        unit:      "$"
-        precision: 2
+        unit:      "т."
+        precision: 0
         separator: "."
-        delimiter: ","
-        format:    "%u%n"
+        delimiter: ""
+        format:    "%n %u"
 #END:currency
 
 #START:errors

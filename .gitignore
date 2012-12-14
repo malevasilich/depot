@@ -30,3 +30,14 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+
+# Ignore app config with proxy passwords
+# it should be like this:
+#development:
+#  http_proxy: http://proxy.domain.com:port
+#  http_proxy_username: username
+#  http_proxy_password: secret
+
+config/http_proxy.yml
+
