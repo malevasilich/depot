@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br />
-    <%= f.select :pay_type, PaymentType.names, prompt: 'Выберите тип оплаты' %>
+    <%= f.select :pay_type, PaymentType.names.collect {|p| [t('.payment_type.'+p), p]}, prompt: 'Выберите тип оплаты' %> 
   </div>
   <div class="actions">
     <%= f.submit 'Отправить заказ' %>
