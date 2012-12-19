@@ -47,3 +47,7 @@ group :development do
   gem "awesome_print"
 end
 
+group :production do
+  gem "mysql2"
+end
+
